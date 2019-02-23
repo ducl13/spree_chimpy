@@ -2,6 +2,13 @@ class Spree::Chimpy::SubscribersController < ApplicationController
   respond_to :html, :json
 
   def create
+    referer = request.referer || root_url # Referer is optional in request.
+    
+    if subscriber_params[:email].blank?
+      redirect_to referer
+      return
+    end
+
     @subscriber = Spree::Chimpy::Subscriber.where(email: subscriber_params[:email]).first_or_initialize
     @subscriber.email = subscriber_params[:email]
     @subscriber.subscribed = subscriber_params[:subscribed]
@@ -11,7 +18,6 @@ class Spree::Chimpy::SubscribersController < ApplicationController
       flash[:error] = Spree.t(:failure, scope: [:chimpy, :subscriber])
     end
 
-    referer = request.referer || root_url # Referer is optional in request.
     respond_with @subscriber, location: referer
   end
 
