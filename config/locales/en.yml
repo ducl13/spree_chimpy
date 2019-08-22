@@ -2,9 +2,9 @@
 en:
   spree:
     chimpy:
-      subscribed_label: Sign me up to the newsletter
-      admin_subscribed_label: Subscribed to newsletter
-      subscribe_title: Subscribe to our newsletter
+      subscribed_label: Subscribe to our promotional emails
+      admin_subscribed_label: Subscribe to promotional emails
+      subscribe_title: Subscribe to our promotional emails
       subscribed: Subscribed
       uncategorized: Uncategorized
       email:
